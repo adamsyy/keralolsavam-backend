@@ -1,0 +1,6 @@
+version: '3.3'
+services:
+  keralolsavam-backend:
+    container_name: keralolsavam-backend
+    build:
+      context: .

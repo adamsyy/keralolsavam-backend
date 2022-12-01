@@ -1,4 +1,5 @@
 const express = require("express");
+require('dotenv').config()
 const app = express();
 
 const cors=require("cors");
@@ -13,7 +14,7 @@ const mongoose = require("mongoose");
 
 
 mongoose  
-  .connect("mongodb+srv://adamsy:adamsy@cluster0.sjcloiv.mongodb.net/?retryWrites=true&w=majority", {
+  .connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -25,7 +26,7 @@ app.use(cors())
 
 //send response api is working 
 app.get("/", (req, res) => {
-  res.send("API is working");
+  res.send("API is working perfectly.");
 });
 
 app.use("/api/auth", require("./routes/auth"));
