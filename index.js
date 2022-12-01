@@ -26,7 +26,7 @@ app.use(cors())
 
 //send response api is working 
 app.get("/", (req, res) => {
-  res.send("API is working perfectly.");
+  res.send("API is working.");
 });
 
 app.use("/api/auth", require("./routes/auth"));
