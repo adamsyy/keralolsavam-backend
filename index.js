@@ -1,32 +1,4 @@
-const { spawn } = require("child_process");
-try {
-  setInterval(() => {
-    const child = spawn(`git pull --rebase origin master`, { shell: true });
-    child.stdout.on("data", (data) => {
-      console.log(`stdout: ${data}`);
-    });
-  
-    child.stderr.on("data", (data) => {
-      console.log(`stderr: ${data}`);
-    });
-  
-    child.on("error", (error) => {
-      console.log(`error: ${error.message}`);
-    });
-  
-    child.on("close", (code) => {
-      console.log(`child process exited with code ${code}`);
-    });
-  }, 2000);
-}
-catch(err) {
-  console.log(err);
-}
-
-
-
 const express = require("express");
-require('dotenv').config()
 const app = express();
 
 const cors=require("cors");
@@ -53,7 +25,7 @@ app.use(cors())
 
 //send response api is working 
 app.get("/", (req, res) => {
-  res.send("API is working.");
+  res.send("API is working");
 });
 
 app.use("/api/auth", require("./routes/auth"));
