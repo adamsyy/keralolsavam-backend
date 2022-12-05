@@ -39,5 +39,5 @@ app.use("/api/auth", require("./routes/auth"));
 //   res.send("backend is up and running")
 //   })
 
-const PORT = 80;
+const PORT = process.env.PORT;
 app.listen(PORT, () => console.log(`Listening at ${PORT}`));
