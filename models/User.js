@@ -5,13 +5,19 @@ const User = new Schema({
   name: {
     type: String,
   },
+  phone: {
+    type: String,
+  },
   address: {
+    type: String,
+  },
+  date: {
     type: String,
   },
   sex: {
     type: String,
   },
-  place: {
+  age: {
     type: String,
   },
   lsgi: {
@@ -20,10 +26,13 @@ const User = new Schema({
   localbody: {
     type: String,
   },
-  artEvents:{
+  place: {
+    type: String,
+  },
+  artEvents: {
     type: [String],
   },
-  sportsEvents:{
+  sportsEvents: {
     type: [String],
   },
 });
