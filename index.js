@@ -35,6 +35,9 @@ app.use("/api/auth", require("./routes/auth"));
 //api for news
 app.use("/api/news", require("./routes/news"));
 
+//endpoint for events
+app.use("/api/events", require("./routes/events"));
+
 
 // app.use("/getprice", require("./routes/getprice"));
 // app.use("/auth", require("./routes/auth"));
