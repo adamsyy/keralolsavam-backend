@@ -1,4 +1,4 @@
-const NewsSchema=require('../../modelS/News');
+const NewsSchema=require('../../models/News');
 
 module.exports.Postnews=async(req,res)=>{
     var {title}=req.body;

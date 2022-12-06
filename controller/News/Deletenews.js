@@ -1,4 +1,4 @@
-const NewsSchema=require('../../modelS/News');
+const NewsSchema=require('../../models/News');
 
 module.exports.Deletenews=async(req,res)=>{
 

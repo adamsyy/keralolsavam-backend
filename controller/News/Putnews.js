@@ -1,4 +1,4 @@
-const NewsSchema=require('../../modelS/News');
+const NewsSchema=require('../../models/News');
 
 module.exports.Putnews=async(req,res)=>{
     NewsSchema.findByIdAndUpdate(req
