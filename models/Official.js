@@ -3,7 +3,17 @@ const Schema = mongoose.Schema;
 
 const Official = new Schema({
  
- 
+ email:
+    {
+        type:String,
+    },
+    name:
+    {
+        type:String,
+    },
+    
+    
+
 
 });
 
