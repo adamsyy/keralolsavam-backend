@@ -1,8 +1,8 @@
 const express = require("express");
-require('dotenv').config()
+require("dotenv").config();
 const app = express();
 
-const cors=require("cors");
+const cors = require("cors");
 app.use(express.json());
 
 const bodyParser = require("body-parser");
@@ -10,10 +10,7 @@ const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: true }));
 const mongoose = require("mongoose");
 
-
-
-
-mongoose  
+mongoose
   .connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -22,9 +19,9 @@ mongoose
     console.log("DB Connected");
   });
 
-app.use(cors())
+app.use(cors());
 
-//send response api is working 
+//send response api is working
 app.get("/", (req, res) => {
   res.send("API is working");
 });
@@ -32,7 +29,6 @@ app.get("/", (req, res) => {
 //api for authentication
 
 app.use("/api/auth", require("./routes/auth"));
-
 
 //api for news
 app.use("/api/news", require("./routes/News"));
@@ -42,9 +38,6 @@ app.use("/api/events", require("./routes/Events"));
 
 //endpoint for officials
 app.use("/api/officials", require("./routes/Officials"));
-
-
-
 
 // app.use("/getprice", require("./routes/getprice"));
 // app.use("/auth", require("./routes/auth"));
