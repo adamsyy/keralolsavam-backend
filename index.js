@@ -35,13 +35,13 @@ app.use("/api/auth", require("./routes/auth"));
 
 
 //api for news
-app.use("/api/news", require("./routes/news"));
+app.use("/api/news", require("./routes/News"));
 
 //endpoint for events
-app.use("/api/events", require("./routes/events"));
+app.use("/api/events", require("./routes/Events"));
 
 //endpoint for officials
-app.use("/api/officials", require("./routes/officials"));
+app.use("/api/officials", require("./routes/Officials"));
 
 
 
