@@ -29,6 +29,8 @@ app.get("/", (req, res) => {
   res.send("API is working");
 });
 
+//api for authentication
+
 app.use("/api/auth", require("./routes/auth"));
 
 
