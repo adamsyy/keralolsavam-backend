@@ -19,6 +19,8 @@ mongoose
     console.log("DB Connected");
   });
 
+  const authMiddleware = require("./middleware/auth");
+
 app.use(cors());
 
 //send response api is working
@@ -30,8 +32,10 @@ app.get("/", (req, res) => {
 
 app.use("/api/auth", require("./routes/auth"));
 
+
+//app.use(authMiddleware);
 //api for news
-app.use("/api/news", require("./routes/News"));
+app.use("/api/news", require("./routes/news"));
 
 //endpoint for events
 app.use("/api/events", require("./routes/Events"));

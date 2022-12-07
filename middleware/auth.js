@@ -1,5 +1,12 @@
 // middle ware for getting the token from the header and verifying it
 
+var admin = require("firebase-admin");
+
+var serviceAccount = require("../serviceAccountKey.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+});
 
 const checkAuth = async (req, res, next) => {
   try {
@@ -9,13 +16,13 @@ const checkAuth = async (req, res, next) => {
         .status(401)
         .json({ msg: "No authentication token, access denied" });
     }
-    const verified = jwt.verify(token, process.env.JWT_SECRET);
-    if (!verified) {
+    const user = await admin.auth().verifyIdToken(token);
+    if (!user) {
       return res
         .status(401)
         .json({ msg: "Token verification failed, authorization denied" });
     }
-    req.user = verified.id;
+    req.user = user;
     next();
   } catch (err) {
     res.status(500).json({ error: err.message });
