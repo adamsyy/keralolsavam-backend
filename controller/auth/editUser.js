@@ -1,6 +1,6 @@
 const UserSchema = require("../../models/User");
 
-module.exports.signup = async (req, res) => {
+module.exports.editUser = async (req, res) => {
   try {
     var {
       name,
