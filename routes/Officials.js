@@ -10,6 +10,6 @@ router.post("/allot/:id", Allotofficial);
 router.post("/deallot/:id", Deallotofficial);
 router.get("/", Getofficials);
 router.post("/", Createofficials);
-router.put("/", Putofficials);  
+router.put("/:id", Putofficials);  
 
 module.exports = router;

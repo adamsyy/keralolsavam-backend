@@ -1,21 +1,15 @@
-const OfficialSchema=require('../../models/Official');
+const OfficialSchema = require("../../models/Official");
 
-module.exports.Putofficials=async(req,res)=>{
-try{
-   
-
-const {name,email,events}=req.body;
-const official=OfficialSchema.findById(req.params.id);
-official.name=name;
-official.email=email;
-official.events=events;
-official.save();
-res.send(official);
-}
-catch(err){
-    res
-    .status(400)
-    .send({error:err});
-
-}
-}
+module.exports.Putofficials = async (req, res) => {
+  try {
+    const { name, email, events } = req.body;
+    const official = await OfficialSchema.findOneAndUpdate(
+      { _id: req.params.id },
+      { name: name, email: email, events: events },
+      { new: true }
+    );
+    res.send(official);
+  } catch (err) {
+    res.status(400).send({ error: err });
+  }
+};
