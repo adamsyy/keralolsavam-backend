@@ -12,7 +12,7 @@ const Official = new Schema({
         type:String,
     },
     //stores ids of events that are alloted to the official
-    events:[String],
+    events:[Object],
     
     
 
