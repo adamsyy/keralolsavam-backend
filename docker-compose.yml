@@ -4,3 +4,11 @@ services:
     container_name: keralolsavam-backend
     build:
       context: .
+    environment:
+      - VIRTUAL_HOST=dscblogs.mec.ac.in
+    restart: "always"
+
+networks:
+  default:
+    external:
+      name: mec
