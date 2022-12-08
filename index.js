@@ -33,7 +33,7 @@ app.get("/", (req, res) => {
 app.use("/api/auth", require("./routes/auth"));
 
 
-//app.use(authMiddleware);
+// app.use(authMiddleware);
 //api for news
 app.use("/api/news", require("./routes/news"));
 
