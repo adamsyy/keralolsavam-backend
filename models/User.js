@@ -35,6 +35,8 @@ const User = new Schema({
   sportsEvents: {
     type: [String],
   },
+
+  
 });
 
 const UserSchema = mongoose.model("User", User);
