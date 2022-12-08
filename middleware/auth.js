@@ -30,10 +30,10 @@ const checkAuth = async (req, res, next) => {
 };
 
 // sample axios call in frontend:
-// const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/<path>`, {
+// const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/<path>`, ,{
 //   headers: {
 //     "x-auth-token": authToken,
-//   },
+//   }
 // });
 
 module.exports = checkAuth;

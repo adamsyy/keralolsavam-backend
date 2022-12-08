@@ -40,8 +40,12 @@ app.use("/api/news", require("./routes/news"));
 //endpoint for events
 app.use("/api/events", require("./routes/Events"));
 
+
 //endpoint for officials
 app.use("/api/officials", require("./routes/Officials"));
+
+app.use(authMiddleware)
+app.use("/api/officer", require("./routes/officer"));
 
 // app.use("/getprice", require("./routes/getprice"));
 // app.use("/auth", require("./routes/auth"));
