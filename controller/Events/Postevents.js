@@ -5,14 +5,12 @@ module.exports.Postevents=async(req,res)=>{
             name,
             status,
             isarts, chestno,venue,
-            winners,
             time }=req.body;
     const events=new EventsSchema({
         gender,
         name,
         status,
         isarts, chestno,venue,
-        winners,
         time
     })
     events.save()
