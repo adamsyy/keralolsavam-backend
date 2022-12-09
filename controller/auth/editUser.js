@@ -1,4 +1,6 @@
 const UserSchema = require("../../models/User");
+const Participant = require("../../models/partcipant");
+const EventSchema = require("../../models/Events");
 
 module.exports.editUser = async (req, res) => {
   try {
@@ -37,4 +39,46 @@ module.exports.editUser = async (req, res) => {
   } catch (err) {
     res.status(400).json({ message: "error", err });
   }
+
+  // try{
+  //  const data = await UserSchema.find({})
+  //  data.forEach(
+  //   (user)=>{
+  //     user.artEvents.forEach(
+  //      async (event)=>{
+  //         let eventObj = await EventSchema.findOne({name:event})
+  //         let participant = new Participant({
+  //           participant_name:user.name,
+  //           participant_id:user._id,
+  //           event:eventObj.name,
+  //           event_id:eventObj._id,
+  //           serial_no:0,
+  //           score:0
+  //         })
+  //         await participant.save()
+  //       }
+  //     )
+  //     user.sportsEvents.forEach(
+  //       async (event)=>{
+  //          let eventObj = await EventSchema.findOne({name:event})
+  //          let participant = new Participant({
+  //            participant_name:user.name,
+  //            participant_id:user._id,
+  //            event:eventObj.name,
+  //            event_id:eventObj._id,
+  //            serial_no:0,
+  //            score:0
+  //          })
+  //          await participant.save()
+  //        }
+  //      )
+  //   }
+  //  )
+
+  //  res.send("done")
+  // }
+  // catch(error){
+  //  console.log(error)
+  // }
+
 };

@@ -1,4 +1,5 @@
 const User = require("../../models/User");
+const Participant = require("../../models/partcipant");
 
 module.exports.getAllUsers = async (req, res) => {
   try {
@@ -13,4 +14,5 @@ module.exports.getAllUsers = async (req, res) => {
   } catch (err) {
     res.status(400).json({ message: "error", err });
   }
+  
 };
