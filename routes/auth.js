@@ -6,6 +6,6 @@ const router = require("express").Router();
 
 router.post("/signup", signup);
 router.get("/getAllUsers", getAllUsers);
-router.put("/updateUser", editUser);
+router.put("/updateUser/:id", editUser);
 
 module.exports = router;

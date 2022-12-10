@@ -38,6 +38,7 @@ module.exports.editUser = async (req, res) => {
     res.status(200).json(updatedUser);
   } catch (err) {
     res.status(400).json({ message: "error", err });
+    console.log(err);
   }
 
   // try{
