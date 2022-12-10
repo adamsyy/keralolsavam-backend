@@ -33,7 +33,7 @@ app.get("/", (req, res) => {
 app.use("/api/auth", require("./routes/auth"));
 
 
-// app.use(authMiddleware);
+ 
 //api for news
 app.use("/api/news", require("./routes/news"));
 
@@ -44,7 +44,7 @@ app.use("/api/events", require("./routes/Events"));
 //endpoint for officials
 app.use("/api/officials", require("./routes/Officials"));
 
-//app.use(authMiddleware)
+app.use(["/api/officer"],authMiddleware)
 app.use("/api/officer", require("./routes/officer"));
 
 // app.use("/getprice", require("./routes/getprice"));
