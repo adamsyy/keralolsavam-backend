@@ -26,7 +26,7 @@ const Events = new Schema({
     {
         type:String,
     },
-    winners:[String],
+    winners:[Object],
     time:
     {
         type:String,
