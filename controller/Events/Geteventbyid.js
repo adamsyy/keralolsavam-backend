@@ -3,7 +3,7 @@ const UserSchema = require('../../models/User');
 
 module.exports.Geteventbyid = async (req, res) => {
     try {
-        const { id } = req.body;
+        const { id } = req.params;
         const event = await EventsSchema.findById(id);
         //get details of users who have registered for the event
 

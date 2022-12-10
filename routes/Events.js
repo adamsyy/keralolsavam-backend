@@ -8,6 +8,6 @@ const router = require("express").Router();
 router.post("/", Postevents);
 router.get("/", Getevents);
 router.put("/", Addwinners);
-router.post("/id", Geteventbyid);
+router.get("/:id", Geteventbyid);
 
 module.exports = router;
