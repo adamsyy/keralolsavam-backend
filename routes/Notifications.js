@@ -1,5 +1,5 @@
 const {Get_Notification}= require("../controller/Notification/Get_Notification");
-const {post_Notification}= require("../controller/Notification/Post_Notification");
+const {post_Notification}= require("../controller/Notification/post_Notification");
 
 
 const router = require("express").Router();
