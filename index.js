@@ -47,6 +47,11 @@ app.use("/api/officials", require("./routes/Officials"));
 app.use(["/api/officer"],authMiddleware)
 app.use("/api/officer", require("./routes/officer"));
 
+
+//endpoint for notifications
+app.use("/api/notifications", require("./routes/Notifications"));
+
+
 // app.use("/getprice", require("./routes/getprice"));
 // app.use("/auth", require("./routes/auth"));
 // app.use("/test", require("./routes/testing/test"));
