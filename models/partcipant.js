@@ -19,7 +19,10 @@ const Participant = new Schema({
   },
   score: {
     type: String,
-  }  
+  }  ,
+  isarts: {
+    type: Boolean,
+  },
 });
 
 const ParticipantSchema = mongoose.model("Participant", Participant);
