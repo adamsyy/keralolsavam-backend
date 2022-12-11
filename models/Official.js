@@ -11,6 +11,11 @@ const Official = new Schema({
     {
         type:String,
     },
+    isAdmin:    
+    {
+        type:Boolean,
+        default:false
+    },
     //stores ids of events that are alloted to the official
     events:[Object],
     

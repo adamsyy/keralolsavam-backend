@@ -41,11 +41,12 @@ app.use("/api/news", require("./routes/news"));
 app.use("/api/events", require("./routes/Events"));
 
 
+
+
+app.use(["/api/officer","/api/officials"],authMiddleware)
+app.use("/api/officer", require("./routes/officer"));
 //endpoint for officials
 app.use("/api/officials", require("./routes/Officials"));
-
-app.use(["/api/officer"],authMiddleware)
-app.use("/api/officer", require("./routes/officer"));
 
 
 //endpoint for notifications
