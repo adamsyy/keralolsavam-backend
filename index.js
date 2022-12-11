@@ -53,7 +53,7 @@ app.use("/api/notifications", require("./routes/Notifications"));
 
 
 //get score
-app.use("/api/score", require("./routes/Score"));
+app.use("/api/score", require("./routes/score"));
 
 // app.use("/getprice", require("./routes/getprice"));
 // app.use("/auth", require("./routes/auth"));
