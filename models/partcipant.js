@@ -23,6 +23,12 @@ const Participant = new Schema({
   isarts: {
     type: Boolean,
   },
+  localbody: {
+    type: String,
+  },
+  lsgi: {
+    type: String,
+  },
 });
 
 const ParticipantSchema = mongoose.model("Participant", Participant);
