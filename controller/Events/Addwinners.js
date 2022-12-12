@@ -22,6 +22,7 @@ module.exports.Addwinners = async (req, res) => {
     res.status(200).json({ message: "events saved", events });
   } catch (err) {
     res.status(400).json({ message: "error", err });
+    console.log(err)
   }
 };
 
