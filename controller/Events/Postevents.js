@@ -15,11 +15,11 @@ module.exports.Postevents=async(req,res)=>{
         isarts, chestno,venue,
         time
     })
-    const official = await OfficialSchema.findOne({ email: req.user.email });
-    console.log(official);
-    if (!official) {
-      return res.status(400).json({ message: "not authorized" });
-    }
+    // const official = await OfficialSchema.findOne({ email: req.user.email });
+    // console.log(official);
+    // if (!official) {
+    //   return res.status(400).json({ message: "not authorized" });
+    // }
     events.save()
     .then((events)=>{
         res.status(200).json({message:"events saved",events})

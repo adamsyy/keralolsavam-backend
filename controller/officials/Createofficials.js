@@ -4,9 +4,9 @@ module.exports.Createofficials=async(req,res)=>{
 try{
     const {email,name,events}=req.body;
     const Official = await OfficialSchema.findOne({ email: req.user.email });
-    if (!Official.isAdmin) {
-      return res.status(400).json({ message: "not authorized" });
-    }
+    // if (!Official.isAdmin) {
+    //   return res.status(400).json({ message: "not authorized" });
+    // }
     const official=new OfficialSchema({
         email,
         name,
