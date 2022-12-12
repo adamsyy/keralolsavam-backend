@@ -19,15 +19,50 @@ module.exports.editUser = async (req, res) => {
     } = req.body;
     // create a function which takes in 2 arrays as params and then returns all the elements which are present in the first array but not in the second array
     
-
+    let userorg = await UserSchema.findOne({_id:req.params.id})
    
-        let diff = []
-        arr1.forEach((item)=>{
-            if(!arr2.includes(item)){
-                diff.push(item)
+        let rmElements = []
+        let addElements = [...artEvents, ...sportsEvents]
+        userorg.artEvents
+        .forEach((item)=>{
+            if(!artEvents.includes(item)){
+                rmElements.push(item)
             }
+            addElements = addElements.filter((element)=>element!==item)
         })
-    
+        userorg.sportsEvents
+        .forEach((item)=>{
+            if(!sportsEvents.includes(item)){
+                rmElements.push(item)
+            }
+            addElements = addElements.filter((element)=>element!==item)
+        })
+        rmElements.forEach(async (event)=>{
+             let eventObj = await EventSchema.findOne
+              ({name:event})
+              await Participant.deleteOne({participant_id:req.params.id,event_id:eventObj._id})
+        })
+        addElements.forEach(async (event)=>{
+            let eventObj = await EventSchema.findOne({name:event})
+            let participant = new Participant({
+              participant_name:userorg.name,
+              participant_id:userorg._id,
+              event:eventObj.name,
+              isarts:artEvents.includes(event),
+              event_id:eventObj._id,
+              serial_no:0,
+              score:0,
+              lsgi:userorg.lsgi,
+              localbody:userorg.localbody
+            })
+            await participant.save()
+        })
+        await Participant.updateMany({participant_id:req.params.id},{
+          participant_name:name,
+          localbody,
+          lsgi
+
+        })
    
 
     let updatedUser = await UserSchema.findOneAndUpdate(
