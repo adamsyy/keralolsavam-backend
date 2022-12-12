@@ -17,6 +17,18 @@ module.exports.editUser = async (req, res) => {
       artEvents,
       sportsEvents,
     } = req.body;
+    // create a function which takes in 2 arrays as params and then returns all the elements which are present in the first array but not in the second array
+    
+
+   
+        let diff = []
+        arr1.forEach((item)=>{
+            if(!arr2.includes(item)){
+                diff.push(item)
+            }
+        })
+    
+   
 
     let updatedUser = await UserSchema.findOneAndUpdate(
       { _id: req.params.id },
