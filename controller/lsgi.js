@@ -16,21 +16,21 @@ module.exports.lsgi = async (req, res) => {
   const participants = await ParticipantSchema.find();
 
   for (var i = 0; i < participants.length; i++) {
-    if (participants[i].localbody == "Block Panchayath") {
+    if (participants[i].lsgi == "Block Panchayath") {
       block += parseInt(participants[i].score);
       if (participants[i].isarts == true) {
         block_arts += parseInt(participants[i].score);
       } else {
         block_sports += parseInt(participants[i].score);
       }
-    } else if (participants[i].localbody == "Municipalities") {
+    } else if (participants[i].lsgi == "Municipality") {
       muncipality += parseInt(participants[i].score);
       if (participants[i].isarts == true) {
         muncipality_arts += parseInt(participants[i].score);
       } else {
         muncipality_sports += parseInt(participants[i].score);
       }
-    } else if (participants[i].localbody == "Corporation") {
+    } else if (participants[i].lsgi == "Corporation") {
       corporation += parseInt(participants[i].score);
       if (participants[i].isarts == true) {
         corporation_arts += parseInt(participants[i].score);

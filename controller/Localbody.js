@@ -7,6 +7,10 @@ module.exports.Localbody = async (req, res) => {
   var Angamaly_Sports = 0;
   var Angamaly_Arts = 0;
 
+  var Angamaly_Block = 0;
+  var Angamaly_Block_Sports = 0;
+  var Angamaly_Block_Arts = 0;
+
   var Alangad = 0;
   var Alangad_Sports = 0;
   var Alangad_Arts = 0;
@@ -22,6 +26,10 @@ module.exports.Localbody = async (req, res) => {
   var Kothamangalam = 0;
   var Kothamangalam_Sports = 0;
   var Kothamangalam_Arts = 0;
+
+  var Kothamangalam_Block = 0;
+  var Kothamangalam_Block_Sports = 0;
+  var Kothamangalam_Block_Arts = 0;
 
   var Paravur = 0;
   var Paravur_Sports = 0;
@@ -95,6 +103,10 @@ module.exports.Localbody = async (req, res) => {
   var Muvattupuzha_Sports = 0;
   var Muvattupuzha_Arts = 0;
 
+  var Muvattupuzha_Block = 0;
+  var Muvattupuzha_Block_Sports = 0;
+  var Muvattupuzha_Block_Arts = 0;
+
   var Cochi = 0;
   var Cochi_Sports = 0;
   var Cochi_Arts = 0;
@@ -106,12 +118,25 @@ module.exports.Localbody = async (req, res) => {
   const participants = await ParticipantSchema.find();
 
   for (var i = 0; i < participants.length; i++) {
-    if (participants[i].localbody == "Angamaly") {
+    if (
+      participants[i].localbody == "Angamaly" &&
+      participants[i].lsgi == "Municipality"
+    ) {
       Angamaly += parseInt(participants[i].score);
       if (participants[i].isarts == true) {
         Angamaly_Arts += parseInt(participants[i].score);
       } else {
         Angamaly_Sports += parseInt(participants[i].score);
+      }
+    } else if (
+      participants[i].localbody == "Angamaly" &&
+      participants[i].lsgi == "Block Panchayath"
+    ) {
+      Angamaly_Block += parseInt(participants[i].score);
+      if (participants[i].isarts == true) {
+        Angamaly_Block_Arts += parseInt(participants[i].score);
+      } else {
+        Angamaly_Block_Sports += parseInt(participants[i].score);
       }
     } else if (participants[i].localbody == "Alangad") {
       Alangad += parseInt(participants[i].score);
@@ -134,12 +159,25 @@ module.exports.Localbody = async (req, res) => {
       } else {
         Koovappady_Sports += parseInt(participants[i].score);
       }
-    } else if (participants[i].localbody == "Kothamangalam") {
+    } else if (
+      participants[i].localbody == "Kothamangalam" &&
+      participants[i].lsgi == "Municipality"
+    ) {
       Kothamangalam += parseInt(participants[i].score);
       if (participants[i].isarts == true) {
         Kothamangalam_Arts += parseInt(participants[i].score);
       } else {
         Kothamangalam_Sports += parseInt(participants[i].score);
+      }
+    } else if (
+      participants[i].localbody == "Kothamangalam" &&
+      participants[i].lsgi == "Block Panchayath"
+    ) {
+      Kothamangalam_Block += parseInt(participants[i].score);
+      if (participants[i].isarts == true) {
+        Kothamangalam_Block_Arts += parseInt(participants[i].score);
+      } else {
+        Kothamangalam_Block_Sports += parseInt(participants[i].score);
       }
     } else if (participants[i].localbody == "Paravur") {
       Paravur += parseInt(participants[i].score);
@@ -275,12 +313,25 @@ module.exports.Localbody = async (req, res) => {
       } else {
         Maradu_Sports += parseInt(participants[i].score);
       }
-    } else if (participants[i].localbody == "Muvattupuzha") {
+    } else if (
+      participants[i].localbody == "Muvattupuzha" &&
+      participants[i].lsgi == "Municipality"
+    ) {
       Muvattupuzha += parseInt(participants[i].score);
       if (participants[i].isarts == true) {
         Muvattupuzha_Arts += parseInt(participants[i].score);
       } else {
         Muvattupuzha_Sports += parseInt(participants[i].score);
+      }
+    } else if (
+      participants[i].localbody == "Muvattupuzha" &&
+      participants[i].lsgi == "Block Panchayath"
+    ) {
+      Muvattupuzha_Block += parseInt(participants[i].score);
+      if (participants[i].isarts == true) {
+        Muvattupuzha_Block_Arts += parseInt(participants[i].score);
+      } else {
+        Muvattupuzha_Block_Sports += parseInt(participants[i].score);
       }
     } else if (participants[i].localbody == "Cochi") {
       Cochi += parseInt(participants[i].score);
@@ -294,10 +345,16 @@ module.exports.Localbody = async (req, res) => {
 
   res.send([
     {
-      name: "Angamaly",
+      name: "Angamaly Municipality",
       total: Angamaly,
       arts: Angamaly_Arts,
       sports: Angamaly_Sports,
+    },
+    {
+      name: "Angamaly Block Panchayath",
+      total: Angamaly_Block,
+      arts: Angamaly_Block_Arts,
+      sports: Angamaly_Block_Sports,
     },
     {
       name: "Alangad",
@@ -318,10 +375,16 @@ module.exports.Localbody = async (req, res) => {
       sports: Koovappady_Sports,
     },
     {
-      name: "Kothamangalam",
+      name: "Kothamangalam Municipality",
       total: Kothamangalam,
       arts: Kothamangalam_Arts,
       sports: Kothamangalam_Sports,
+    },
+    {
+      name: "Kothamangalam Block Panchayath",
+      total: Kothamangalam_Block,
+      arts: Kothamangalam_Block_Arts,
+      sports: Kothamangalam_Block_Sports,
     },
     {
       name: "Paravur",
@@ -431,10 +494,16 @@ module.exports.Localbody = async (req, res) => {
       sports: Maradu_Sports,
     },
     {
-      name: "Muvattupuzha",
+      name: "Muvattupuzha Municipality",
       total: Muvattupuzha,
       arts: Muvattupuzha_Arts,
       sports: Muvattupuzha_Sports,
+    },
+    {
+      name: "Muvattupuzha Block Panchayath",
+      total: Muvattupuzha_Block,
+      arts: Muvattupuzha_Block_Arts,
+      sports: Muvattupuzha_Block_Sports,
     },
     {
       name: "Cochi",
