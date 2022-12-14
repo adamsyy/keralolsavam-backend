@@ -1,5 +1,7 @@
 const EventsSchema = require('../../models/Events');
 const UserSchema = require('../../models/User');
+const ParticipantSchema = require('../../models/partcipant');
+
 
 module.exports.Geteventbyid = async (req, res) => {
     try {
@@ -9,32 +11,34 @@ module.exports.Geteventbyid = async (req, res) => {
 
         var users_list = [];
 
-        const user = await UserSchema.find();
-        for (var i = 0; i < user.length; i++) {
-            if(event.isarts==true){
+        const user = await ParticipantSchema.find({
+            event_id: id
+        });
+        // for (var i = 0; i < user.length; i++) {
+        //     if(event.isarts==true){
 
-                for (var j = 0; j < user[i].artEvents.length; j++) {
-                    if (user[i].artEvents[j] == event.name) {
-                        users_list.push(user[i]);
-                    }
-                }
-            }
-            else{
-                for (var j = 0; j < user[i].sportsEvents.length; j++) {
-                    if (user[i].sportsEvents[j] == event.name) {
-                        users_list.push(user[i]);
-                    }
-                }
-            }
+        //         for (var j = 0; j < user[i].artEvents.length; j++) {
+        //             if (user[i].artEvents[j] == event.name) {
+        //                 users_list.push(user[i]);
+        //             }
+        //         }
+        //     }
+        //     else{
+        //         for (var j = 0; j < user[i].sportsEvents.length; j++) {
+        //             if (user[i].sportsEvents[j] == event.name) {
+        //                 users_list.push(user[i]);
+        //             }
+        //         }
+        //     }
            
 
             
-        }
+        // }
 
         res.send(
             {
                 "event": event,
-                "users": users_list
+                "users": user
             }
         );
     }
