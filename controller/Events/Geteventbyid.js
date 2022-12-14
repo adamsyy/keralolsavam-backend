@@ -6,7 +6,7 @@ module.exports.Geteventbyid = async (req, res) => {
     try {
         const { id } = req.params;
         let event = await EventsSchema.findById(id);
-        let winners = await ParticipantSchema.find({event_id:req.params.id}).sort({score:-1}).limit(3);
+        let winners = await ParticipantSchema.find({event_id:req.params.id}).sort({score:-1}).collation({locale: "en_US", numericOrdering: true}).limit(3);
         
         //add property name to object inside winners array and assign its value the same as that of participant name
         for (var i = 0; i < winners.length; i++) {
