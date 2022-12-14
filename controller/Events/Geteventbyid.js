@@ -2,13 +2,21 @@ const EventsSchema = require('../../models/Events');
 const UserSchema = require('../../models/User');
 const ParticipantSchema = require('../../models/partcipant');
 
-
 module.exports.Geteventbyid = async (req, res) => {
     try {
         const { id } = req.params;
-        const event = await EventsSchema.findById(id);
+        let event = await EventsSchema.findById(id);
+        let winners = await ParticipantSchema.find({event_id:req.params.id}).sort({score:-1}).limit(3);
+        
+        //add property name to object inside winners array and assign its value the same as that of participant name
+        for (var i = 0; i < winners.length; i++) {
+            console.log("hello", winners[i].participant_name)
+            let obj = {...winners[i]._doc, name: winners[i].participant_name};
+            if(event.winners[i]==null || event.winners[i]?.name=="")event.winners[i]=obj;
+        }   
+        
         //get details of users who have registered for the event
-
+        console.log(event.winners)
         var users_list = [];
 
         const user = await ParticipantSchema.find({
@@ -43,6 +51,7 @@ module.exports.Geteventbyid = async (req, res) => {
         );
     }
     catch (err) {
+        console.log(err)
         res
             .status(400)
             .send(err);
