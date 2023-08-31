@@ -1,13 +1,4 @@
-# Medscape
-
-* First prize winning project at Tek-O-thon 2022
-
-* Driving Informed Medical Decisions.
-
-* All health solutions under one hood.
-
-## Backend Code
-[Link](https://github.com/adamsyy/Medscape/tree/main/medscape-backend)
+# keralolsavam
 ## Stacks used
 ![Nodejs](https://img.shields.io/badge/Nodejs-FF8800?style=for-the-badge&logo=Nodejs&logoColor=white)
 ![Express](https://img.shields.io/badge/Express-%2302569B.svg?style=for-the-badge&logo=express&logoColor=white)
